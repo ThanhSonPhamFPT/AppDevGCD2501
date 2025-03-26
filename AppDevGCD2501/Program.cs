@@ -1,3 +1,6 @@
+using AppDevGCD2501.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AppDevGCD2501
 {
     public class Program
@@ -8,7 +11,7 @@ namespace AppDevGCD2501
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
